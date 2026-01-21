@@ -1,0 +1,27 @@
+# Create conda environment
+mkdir -p tool-mcps/amber_mcp
+cd tool-mcps/amber_mcp
+mamba env create -p ./env python=3.11 pip -y
+mamba activate ./env
+mamba install -c conda-forge cmake make c-compiler cxx-compiler fortran-compiler libnetcdf netcdf-fortran numpy scipy matplotlib mpi4py -y
+mamba install -c conda-forge mpich-mpicc mpich-mpicxx mpich-mpifort -y
+mamba install "fftw=*=mpi_openmpi*" -c conda-forge -y
+# Install and build binaries
+mkdir -p repo
+# Download pmemd24.tar.bz2 ambertools25.tar.bz2 from https://ambermd.org/GetAmber.php by applying for the license
+cd repo
+tar xvf ambertools25.tar.bz2
+tar xvf pmemd24.tar.bz2  
+rsync -av pmemd24_src/ ambertools25_src/
+
+# Build the binaries
+cd ambertools25_src/build
+rm -rf CMakeCache.txt CMakeFiles
+
+cmake .. -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX \
+         -DCOMPILER=GNU \
+         -DMPI=ON \
+         -DBUILD_PYTHON=ON \
+         -DDOWNLOAD_MINICONDA=OFF \
+         -DPYTHON_EXECUTABLE=$(which python) \
+         -DCMAKE_POLICY_VERSION_MINIMUM=3.5
