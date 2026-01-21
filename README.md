@@ -18,12 +18,12 @@
 This MCP server provides computational chemistry and molecular dynamics simulation capabilities based on AmberTools22/Amber22. It offers both standalone scripts and MCP tools for analyzing MD simulations, setting up free energy calculations, and configuring QM/MM calculations for enzyme-substrate complexes.
 
 ### Features
-- **MD Trajectory Analysis**: Parse and analyze Amber .mdout files with energy plotting
-- **PBSA Free Energy Setup**: Configure Poisson-Boltzmann Surface Area calculations
-- **QM/MM Setup**: Prepare quantum mechanics/molecular mechanics calculations
-- **Batch Processing**: Process multiple simulation files simultaneously
-- **Job Management**: Submit and track long-running calculations
-- **Configuration Management**: Flexible parameter control via JSON configs
+- [ ] **MD Trajectory Analysis**: Parse and analyze Amber .mdout files with energy plotting
+- [ ] **PBSA Free Energy Setup**: Configure Poisson-Boltzmann Surface Area calculations
+- [ ] **QM/MM Setup**: Prepare quantum mechanics/molecular mechanics calculations
+- [ ] **Batch Processing**: Process multiple simulation files simultaneously
+- [ ] **Job Management**: Submit and track long-running calculations
+- [ ] **Configuration Management**: Flexible parameter control via JSON configs
 
 ### Directory Structure
 ```
